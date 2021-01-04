@@ -108,7 +108,7 @@ function cg(A, b :: AbstractVector{T};
     @kaxpy!(n, -α, Ap, r)
     z = M * r
     γ_next = @kdot(n, r, z)
-    rNorm = sqrt(γ_next)
+    rNorm = sqrt(abs(γ_next))
     push!(rNorms, rNorm)
 
     solved = (rNorm ≤ ε) || on_boundary
